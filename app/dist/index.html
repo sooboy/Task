@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Team Task</title>
+</head>
+<body>
+    <button class="createProjectBtn">添加Project</button>
+    <div class="project_list">
+    </div>
+    <div class="newProjectModal" style="display:none;">
+        <input type="text">
+        <button class="submitProjectBtn">确定</button>
+    </div>
+    <script data-main="main.js" src="https://static.smm.cn/hq.smm.cn/1.7.56//js/require.js"></script>
+    <script>
+            require.config({
+                paths:{
+                    jquery:     "https://static.smm.cn/common.smm.cn/jquery1.11.3/dist/jquery.min"
+                }
+            })
+    </script>
+</body>
+</html>

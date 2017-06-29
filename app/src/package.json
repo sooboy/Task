@@ -1,0 +1,23 @@
+{
+  "name": "task",
+  "version": "1.0.0",
+  "description": "团队任务管理系统",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sooboy/Task.git"
+  },
+  "keywords": [
+    "team",
+    "task"
+  ],
+  "author": "Regan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sooboy/Task/issues"
+  },
+  "homepage": "https://github.com/sooboy/Task#readme"
+}

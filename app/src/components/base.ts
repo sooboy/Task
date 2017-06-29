@@ -10,6 +10,9 @@ export interface Base {
   openTime?: number;
   startTime?: number;
   endTime?: number;
+
+  //   配置文件
+  option?: Object;
 }
 
 export enum Status {
