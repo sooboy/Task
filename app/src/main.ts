@@ -11,7 +11,9 @@ var dom = {
     status: false,
     body: $(".newProjectModal"),
     title: $(".titleProjectInput"),
-    submit: $("submitProjectBtn")
+    submit: $(".submitProjectBtn"),
+    addUser: $(".projectAddUser"),
+    usersPlace: $(".projectUsers")
   }
 };
 
@@ -26,11 +28,13 @@ class projectListItem {
     this.editBtn = edit;
   }
   template(): JQuery {
-    var edit = this.editBtn.click(() => {
-      console.log(this.data.name, "edit has been click");
+    var edit = this.editBtn.click(function() {
+      // console.log(this.data.name, "edit has been click");
+      // $(this).parent().remove();
     });
-    var deleten = this.deleteBtn.click(() => {
-      console.log(this.data.name, "delete has been click");
+    var deleten = this.deleteBtn.click(function() {
+      // console.log(this.data.name, "delete has been click");
+      $(this).parent().remove();
     });
     this._dom = this.data.template().append(edit, deleten);
 
@@ -58,6 +62,7 @@ class Dashbord {
     });
     console.log("添加 生成列表功能");
     this.projectsHTML();
+    this.dispatch();
   }
 
   getProject() {
@@ -73,9 +78,38 @@ class Dashbord {
     }
   }
   projectsHTML() {
+    this.dom.projects.html("");
     for (var v of this.projects) {
       this.dom.projects.append(v.template());
     }
+  }
+  addProject(p: projectListItem) {
+    this.projects.push(p);
+    this.projectsHTML();
+  }
+
+  dispatch() {
+    this.dom.newProjectModal.submit.click(() => {
+      console.log(this.dom.newProjectModal.title.val());
+      this.addProject(
+        new projectListItem(
+          Project.createProject(0, this.dom.newProjectModal.title.val()),
+          $("<button>编辑</botton>"),
+          $("<button>删除</botton>")
+        )
+      );
+    });
+    this.dom.newProjectModal.addUser.click(() => {
+      console.log("add user");
+      this.dom.newProjectModal.usersPlace.append(
+        $("<div></div>").append(
+          $("<input>"),
+          $("<button>删除</button>").click(function() {
+            $(this).parent().remove();
+          })
+        )
+      );
+    });
   }
 }
 

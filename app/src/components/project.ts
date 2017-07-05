@@ -13,8 +13,6 @@ export interface ProjectInterface {
   tag?: string;
   //   与之相关的开发
   users?: UserInterface[];
-  // template 生成html
-  template(o?: TemplateInterface): JQuery;
 }
 
 export namespace Project {

@@ -18,7 +18,9 @@
             status: false,
             body: $(".newProjectModal"),
             title: $(".titleProjectInput"),
-            submit: $("submitProjectBtn")
+            submit: $(".submitProjectBtn"),
+            addUser: $(".projectAddUser"),
+            usersPlace: $(".projectUsers")
         }
     };
     var projectListItem = (function () {
@@ -28,12 +30,13 @@
             this.editBtn = edit;
         }
         projectListItem.prototype.template = function () {
-            var _this = this;
             var edit = this.editBtn.click(function () {
-                console.log(_this.data.name, "edit has been click");
+                // console.log(this.data.name, "edit has been click");
+                // $(this).parent().remove();
             });
             var deleten = this.deleteBtn.click(function () {
-                console.log(_this.data.name, "delete has been click");
+                // console.log(this.data.name, "delete has been click");
+                $(this).parent().remove();
             });
             this._dom = this.data.template().append(edit, deleten);
             return this._dom;
@@ -62,6 +65,7 @@
             });
             console.log("添加 生成列表功能");
             this.projectsHTML();
+            this.dispatch();
         };
         Dashbord.prototype.getProject = function () {
             //  todo 模拟产生一个projects
@@ -70,10 +74,28 @@
             }
         };
         Dashbord.prototype.projectsHTML = function () {
+            this.dom.projects.html("");
             for (var _i = 0, _a = this.projects; _i < _a.length; _i++) {
                 var v = _a[_i];
                 this.dom.projects.append(v.template());
             }
+        };
+        Dashbord.prototype.addProject = function (p) {
+            this.projects.push(p);
+            this.projectsHTML();
+        };
+        Dashbord.prototype.dispatch = function () {
+            var _this = this;
+            this.dom.newProjectModal.submit.click(function () {
+                console.log(_this.dom.newProjectModal.title.val());
+                _this.addProject(new projectListItem(project_1.Project.createProject(0, _this.dom.newProjectModal.title.val()), $("<button>编辑</botton>"), $("<button>删除</botton>")));
+            });
+            this.dom.newProjectModal.addUser.click(function () {
+                console.log("add user");
+                _this.dom.newProjectModal.usersPlace.append($("<div></div>").append($("<input>"), $("<button>删除</button>").click(function () {
+                    $(this).parent().remove();
+                })));
+            });
         };
         return Dashbord;
     }());

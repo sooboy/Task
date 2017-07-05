@@ -39,5 +39,11 @@
             return t;
         }
         Template.ProjectItem = ProjectItem;
+        // 对于展开的project列表
+        function ExpondProject(o) {
+            var t = $("\n        <div>\n            <p>project name is " + o.name + "</p>\n            " + (o.items && o.items.template().html()) + "\n        </div>\n      ");
+            return t;
+        }
+        Template.ExpondProject = ExpondProject;
     })(Template = exports.Template || (exports.Template = {}));
 });

@@ -34,4 +34,15 @@ export namespace Template {
     });
     return t;
   }
+
+  // 对于展开的project列表
+  export function ExpondProject(o: any): JQuery {
+    var t = $(`
+        <div>
+            <p>project name is ${o.name}</p>
+            ${o.items&&o.items.template().html()}
+        </div>
+      `);
+    return t;
+  }
 }

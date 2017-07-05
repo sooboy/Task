@@ -1,3 +1,4 @@
+import { TemplateInterface } from "./template";
 // base  提供最基本的继承
 export interface Base {
   // id 标记
@@ -13,6 +14,9 @@ export interface Base {
 
   //   配置文件
   option?: Object;
+
+  // template 生成html
+  template(o?: TemplateInterface): JQuery;
 }
 
 export enum Status {

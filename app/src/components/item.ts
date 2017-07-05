@@ -4,4 +4,6 @@ import { Base } from "./base";
 export interface ItemInterface extends Base {
   // Title 必须属性
   title: string;
+  // 每条子项可以继续添加
+  items?: ItemInterface[]
 }
